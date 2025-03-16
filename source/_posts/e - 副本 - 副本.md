@@ -12,7 +12,8 @@ tags:
 - xaoxuu
 - weekdaycare
 title: stellar主题修改
-updated: '2025-02-14T09:58:44.975+08:00'
+top_img: https://img.picui.cn/free/2025/03/16/67d62e4e0aed9.png
+updated: '2025-03-14T09:58:44.975+08:00'
 ---
 # 开头
 
