@@ -1,37 +1,61 @@
+- const { darkmode } = theme
 nav#nav
-  span#blog-info
-    a.nav-site-title(href=url_for('/') title=config.title)
-      if theme.nav.logo
-        img.site-icon(src=url_for(theme.nav.logo) alt='Logo')
-      if theme.nav.display_title
-        span.site-name=config.title
-    //- if is_post() // 新版将头像改了，我感觉不好看，所以注释掉了
-    //-   a.nav-page-title(href=url_for('/'))
-    //-     span.site-name=(page.title || config.title)
+  #nav-group
+    span#blog_name
+      if theme.nav.enable
+        .back-home-button
+          i.anzhiyufont.anzhiyu-icon-grip-vertical
+          .back-menu-list-groups
+            each group in theme.nav.menu
+              .back-menu-list-group
+                .back-menu-list-title= group.title
+                .back-menu-list
+                  each item in group.item
+                    a.back-menu-item(href=url_for(item.link), title=item.name)
+                      img.back-menu-item-icon(src=item.icon alt=item.name)
+                      span.back-menu-item-text= item.name
+      a#site-name(href=url_for('/') accesskey="h")
+        .title #[=config.title]
+        i.anzhiyufont.anzhiyu-icon-house-chimney
+      if (theme.nav.clock)
+        !=partial('includes/anzhiyu/clock', {}, {cache: true})
 
-  #menus
-  if theme.menu
-    != partial('includes/header/menu_item', {}, {cache: true})
-    center(id="name-container")
-      a(id="page-name" href="javascript:btf.scrollToDest(0, 500)") PAGE_NAME
-    
-  #nav-right
-    #travellings
-      a.site-page(href=url_for('https://www.travellings.cn/go.html') title="友链接力-随机开往")
-        i.fa-solid.fa-bus.fa-fw
-    #ten-years
-      a.site-page(href=url_for('https://foreverblog.cn/go.html') title="友链接力-十年之约")
-        i.fa-brands.fa-nfc-symbol.fa-fw
-    #random
-      a.site-page(href=url_for('javascript:randomPost()') title="随机前往一个文章")
-        i.fa-solid.fa-shuffle.fa-fw
-    if theme.search.use
-      #search-button
-        span.site-page.social-icon.search
-          i.fas.fa-search.fa-fw
+    div.mask-name-container
+      #name-container
+        a#page-name(href="javascript:anzhiyu.scrollToDest(0, 500)") PAGE_NAME
+
+    #menus
+      !=partial('includes/header/menu_item', {}, {cache: true})
+    #nav-right
+      if theme.nav.travelling
+        .nav-button.only-home#travellings_button(title='随机前往一个开往项目网站')
+          a.site-page(onclick='anzhiyu.totraveling()', title='随机前往一个开往项目网站', href='javascript:void(0);', rel='external nofollow', data-pjax-state='external')
+            i.anzhiyufont.anzhiyu-icon-train
+      .nav-button#randomPost_button
+        a.site-page(onclick='toRandomPost()', title='随机前往一个文章', href='javascript:void(0);')
+          i.anzhiyufont.anzhiyu-icon-dice
+      if (theme.algolia_search.enable || theme.local_search.enable || theme.docsearch.enable)
+        div.nav-button#search-button
+          a.site-page.social-icon.search(href='javascript:void(0);', title='搜索🔍' accesskey="s")
+            i.anzhiyufont.anzhiyu-icon-magnifying-glass
+            span=' '+_p('search.title')
+
+      if theme.centerConsole.enable
+        input#center-console(type="checkbox")
+        label.widget(for="center-console" title=_p("中控台") onclick="anzhiyu.switchConsole();")
+          i.left
+          i.widget.center
+          i.widget.right
+
+      !=partial('includes/anzhiyu/console', {}, {cache:true})
+
+      div.nav-button#nav-totop
+        a.totopbtn(href='javascript:void(0);')
+          i.anzhiyufont.anzhiyu-icon-arrow-up
+          span#percent(onclick="anzhiyu.scrollToDest(0,500)") 0
 
       #toggle-menu
-        span.site-page(href="javascript:void(0);" title="展开菜单")
-          i.fas.fa-bars.fa-fw
+        a.site-page(href='javascript:void(0);' title="切换")
+          i.anzhiyufont.anzhiyu-icon-bars
 
 

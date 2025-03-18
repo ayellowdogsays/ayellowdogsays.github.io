@@ -1,46 +1,27 @@
 #page-header
   position: relative
   width: 100%
-  background-color: $light-blue
-  background-position: center center
-  background-size: cover
-  background-repeat: no-repeat
-  transition: all .5s
-
-  if hexo-config('mask.header')
-    &:not(.not-top-img):before
-      position: absolute
-      width: 100%
-      height: 100%
-      background-color: var(--mark-bg)
-      content: ''
+  transition: all 0.5s ease 0s;
+  #nav
+    box-shadow: none;
+    transition: 0.3s;
 
   // index
   &.full_page
     height: $index_top_img_height
     background-attachment: fixed
+    border-radius: 0
+  if hexo-config('index_img')
+    +maxWidth768()
+      #center-console + label
+        i
+          background: var(--font-color)
 
     #site-info
       position: absolute
       top: $index_site_info_top
       padding: 0 10px
       width: 100%
-
-      #site-title
-        font-size: 1.00em
-        
-        +minWidth768()
-          font-size: 1.50em
-
-  .info_title_avatar
-    text-align: center;
-    #site-info-avatar
-      border: 4px solid var(--white)
-      padding: 4px
-      height: 130px
-      width: 130px
-      border-radius: 50%
-      box-sizing: border-box
 
   #site-title,
   #site-subtitle,
@@ -67,6 +48,7 @@
   #site_social_icons
     display: none
     margin: 0 auto
+    width: 300px
     text-align: center
 
     +maxWidth768()
@@ -80,15 +62,19 @@
 
   #scroll-down
     position: absolute
-    bottom: 10px
+    bottom: 0
     width: 100%
     cursor: pointer
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .scroll-down-effects
       position: relative
       width: 100%
       color: var(--light-grey)
-      font-size: 20px
+      font-size: 30px
 
   // page
   &.not-home-page
@@ -108,116 +94,280 @@
 
   // post
   &.post-bg
-    height: 400px
+    height: 31.25rem
+    transition: 0.6s
+    overflow: hidden
+    if hexo-config('dynamicEffect') && hexo-config('dynamicEffect.postTopRollZoomInfo')
+      animation: header 5s linear forwards;
+      animation-timeline: view();
+    if hexo-config('mainTone.enable')
+      background-color: var(--anzhiyu-bar-background)
+    else 
+      background-color: transparent
 
+    // #nav
+    #nav
+      transition: all 0.5s, border 0.3s
+
+    // .post-meta
+    .post-meta:has(.bldbanner),
+    .post-meta:has(.bili-banner),
+    .post-meta:has(.blqbanner)
+      pointer-events: all
+    .bili-banner
+      margin-top: 0 !important
+
+    // #post-info
+    #post-info:has(.bldbanner),
+    #post-info:has(.bili-banner),
+    #post-info:has(.blqbanner)
+      pointer-events: none
+
+    &:has(.bldbanner),
+    &:has(.blqbanner)
+      height: 15rem
+      img
+        border-radius: 0px 
+    &:has(.bili-banner)
+      height: 11rem
+      img
+        border-radius: 0px 
+
+    #post-top-cover 
+      width: 70%;
+      height: 100%;
+      position: relative;
+      margin: 0 -20% 0 auto;
+      overflow: hidden;
+      margin-bottom: 0;
+      user-select: none
+      transform: rotate(10deg) translateY(-10%) scale(var(--anzhiyu-header-cover-scale));
+      will-change: transform
+      if !hexo-config('mainTone.enable')
+        filter: blur(10px) brightness(60%);
+        animation: none;
+        transition: filter 0s
+        margin: auto
+        width: auto
+        &::after
+          display: none
+        img
+          border-radius: 0
+      else
+        filter: blur(10px);
+        +minWidth768()
+          animation: showCover 1s 0.3s backwards;
+          opacity 0.5
+
+      +maxWidth768()
+        margin: 0 0 0 auto;
+        transform: rotate(0deg) translateY(0) scale(1);
+        filter: blur(0px);
+        width: 100%;
+        if hexo-config('mainTone.enable')
+          position: fixed;
+          height: 30rem;
+        else
+          position: absolute;
+          height: 100vh;
+        z-index: 1;
+      &::after
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        box-shadow: 110px -130px 300px 60px var(--anzhiyu-bar-background) inset;
+        +maxWidth768()
+          box-shadow: 0 0 205px 59px var(--anzhiyu-main) inset
+
+      #post-top-bg
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-width: 50vw;
+        min-height: 20rem;
+        +minWidth768()
+          animation: slide-in 0.6s 0.3s backwards;
+        +maxWidth768()
+          min-height: 15rem !important;
+          if hexo-config('mainTone.enable')
+            height: 70% !important;
+          else
+            height: 100% !important;
+          opacity: 1 !important;
+
+    #nav
+      backdrop-filter: none;
+      background: transparent;
+      border-bottom: none;
+    &.nav-fixed
+      #nav
+        background: var(--anzhiyu-card-bg);
+        outline: 1px solid var(--anzhiyu-card-border);
+        transform: translateZ(0);
+      +maxWidth768()
+        #nav
+          border-bottom: none
     +maxWidth768()
-      height: 360px
+      margin-bottom: -12px;
+      transition: 0s !important
+      min-height: 450px;
+      &.nav-fixed
+        #nav
+          background: var(--anzhiyu-card-bg);
+          outline: 1px solid var(--anzhiyu-card-border);
+    if hexo-config('mainTone.enable')
+      &:before    
+        position: absolute
+        width: 100%
+        height: 100%
+        content: ''
+        transition: 0s;
+        background-color: var(--anzhiyu-bar-background);
+        animation: slide-in-op 0.6s 0s forwards;
 
-  // 这里我进行了一定的修改
   #post-info
     position: absolute
-    padding: 0 8%
-    width: 100%
-    text-align: center
-    height: 100%
+    top: 0
+    left: calc((100% - 1400px + 3rem) / 2);
+    width: calc(100% - (100% - 1400px + 3rem));
+    height 100%
     display: flex
-    justify-content: center
-    flex-wrap: npwrap
-    flex-direction: column
-    backdrop-filter: blur(15px)
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    z-index: 3
+    +minWidth768()
+      --anzhiyu-header-translateY: 0
+      animation: post-info-slide-in 0.6s 0.3s backwards;
+      transform: scale(var(--anzhiyu-header-info-scale)) translateY(var(--anzhiyu-header-translateY));
+      transform-origin: left top
+      will-change: transform;
+    +maxWidth1400()
+      padding: 0 3.5rem
+      width 100%
+      left: 0
 
     +maxWidth768()
-      padding: 50px 22px
-      text-align: left
-      justify-content: flex-end
+      padding: 11rem 6% 0;
+      align-items: center;
+      if hexo-config('mainTone.enable')
+        &:after
+          display: block
+          position: absolute;
+          content: "";
+          width: 100%;
+          height: 100%;
+          bottom: 0;
+          left: 0;
+          box-shadow: 0px -265px 287px 45px var(--anzhiyu-bar-background) inset;
+          z-index: 0;
+          animation: none
 
   &.not-top-img
     margin-bottom: 10px
     height: 60px
     background: 0
-
-    .title-seo
-      display: none
+    #nav #menus .menus_item:hover > a
+      background: var(--anzhiyu-main);
+    #travellings_button::after
+      background: var(--anzhiyu-main) !important;
+    #nav 
+      #blog_name .back-home-button,
+      #blog_name #site-name,
+      #nav-right .nav-button a,
+      #nav-right #toggle-menu
+        &:hover
+          color: var(--anzhiyu-white);
+          background: var(--anzhiyu-main);
+          box-shadow: var(--anzhiyu-shadow-main);
+    .post-meta-categories
+      background: rgba(0, 0, 0, 0.2)
 
     #nav
-      display: flex
-      justify-content: center
-      background: rgba(255, 255, 255, .8)
-      box-shadow: 0 5px 6px -5px rgba(133, 133, 133, .6)
-
-      a,
-      span.site-page,
-      .site-name
-        color: var(--font-color)
-        text-shadow: none
+      #blog_name,
+      .mask-name-container,
+      #menus,
+      #nav-right .nav-button,
+      #nav-right #toggle-menu
+        a
+          color: var(--font-color)
+          text-shadow: none
+      #center-console + label
+        i
+          background: var(--font-color)
 
   &.nav-fixed
     #nav
       position: fixed
-      top: -60px
       z-index: 91
-      background: rgba(255, 255, 255, .8)
-      box-shadow: 0 5px 6px -5px alpha($grey, .6)
-      transition: transform .2s ease-in-out, opacity .2s ease-in-out
-      will-change: transform
-
-      #blog-info
-        color: var(--font-color)
-
-        &:hover
-          color: $light-blue
-
-        .site-name
-          text-shadow: none
-        
-        & > a:first-child
-          display: none
-        
-        & > a:last-child
-          display: inline
-
-      a,
-      span.site-page,
+      background: var(--anzhiyu-card-bg);
+      outline: 1px solid var(--anzhiyu-card-border);
+      transform: translateZ(0);
+      top: 0
       #toggle-menu
         color: var(--font-color)
         text-shadow: none
+        transition: background .3s ease-in-out,color 0s ease-in-out
+      #blog_name,
+      .mask-name-container,
+      #menus,
+      #nav-right .nav-button,
+      #nav-right #toggle-menu
+        a
+          color: var(--font-color)
+          text-shadow: none
+          transition: background .3s ease-in-out,color 0s ease-in-out
 
-        &:hover
-          color: $light-blue
-
-    &.fixed
-      #nav
-        top: 0
-        transition: all .5s
-
-  &.nav-visible:not(.fixed)
-    #nav
-      transition: all .5s
-      transform: translate3d(0, 100%, 0)
-
-    & + .layout
-      & > .aside-content > .sticky_layout
-        top: 70px
-        transition: top .5s
-
-  &.fixed
-    #nav
-      position: fixed
-
-    & + .layout
-      & > .aside-content > .sticky_layout
-        top: 70px
-        transition: top .5s
-
-      #card-toc
-        .toc-content
-          max-height: calc(100vh - 170px)
+  &.nav-fixed
+    #name-container
+      z-index: 101;
+      transition: 0.3s;
+      top: 10px;
+      #page-name
+        display: inline;
+        opacity: 1;
+        transition: 0.3s;
+        line-height: 2;
+        +minWidth768()
+          max-width: 15.5rem
+        +minWidth900()
+          max-width: 25.5rem
+        +minWidth1200()
+          max-width: 35.5rem
+        +minWidth2000()
+          max-width: 45.5rem
+    #nav 
+      #menus
+        z-index: 100;
+        div.menus_items
+          transition: 0.3s;
+          height: 40px;
+          margin: auto 0;
+          // position: relative;
+          // top: -60px;
+          transform: translateY(-60px)
+          will-change: transform
+  &.nav-fixed.nav-visible 
+    #page-name
+      z-index: 100;
+      top: 60px;
+      transition: 0.3s;
+    #nav 
+      #menus
+        div.menus_items
+          opacity: 1;
+          transition: 0.3s;
+          // position: relative;
+          // top: 0px;
+          transform: translateY(0px)
+          will-change: transform
 
 #page
-  .page-title
-    margin: 0 0 10px
-    font-weight: bold
-    font-size: 2em
+  h1.page-title
+    margin: 8px 0 20px
 
 // for not top_img
 #post
@@ -225,7 +375,6 @@
     margin-bottom: 30px
 
     .post-title
-      padding-bottom: 4px
       border-bottom: 1px solid var(--light-grey)
       color: var(--text-highlight-color)
 
@@ -237,17 +386,28 @@
       color: #78818a
 
 #post-info
+  +maxWidth768()
+    &:after
+      display: none
+      transition: 0
   .post-title
     @extend .limit-more-line
-    margin-bottom: 8px
     color: var(--white)
-    font-weight: normal
-    font-size: 2.5em
     line-height: 1.5
-    -webkit-line-clamp: 3
+    font-weight: 700;
+    font-size: 3.3rem;
+    text-align: left;
+    margin: 1rem 0 1rem 0;
+    -webkit-line-clamp: 2;
+    padding: 0;
+    overflow: hidden;
 
     +maxWidth768()
-      font-size: 2.1em
+      font-size: 1.5rem
+      -webkit-line-clamp: 3;
+      margin: 0.2rem auto !important;
+      text-align: center;
+      z-index: 4
 
     .post-edit-link
       padding-left: 10px
@@ -255,6 +415,12 @@
   #post-meta
     color: var(--light-grey)
     font-size: 95%
+    display: flex;
+    width: 50rem;
+    max-width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
 
     +minWidth768()
       > .meta-secondline
@@ -263,14 +429,20 @@
 
     +maxWidth768()
       font-size: 90%
+      z-index: 4
+      align-items: center;
 
       > .meta-firstline,
       > .meta-secondline
-        display: inline
+        display: flex;
+        font-size: 90%;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
 
     .post-meta
       &-separator
-        margin: 0 5px
+        margin: 0 8px
 
       &-icon
         margin-right: 4px
@@ -280,6 +452,15 @@
           margin-right: 4px
         else
           display: none
+      &-categories
+        a:not([data-fancybox="gallery"])
+          font-weight: 500;
+          text-decoration: none;
+          padding: 0 0.2em;
+          &:hover 
+            color: var(--anzhiyu-white);
+            background-color: var(--anzhiyu-main);
+            border-radius: 4px;
 
     a
       color: var(--light-grey)
@@ -294,187 +475,115 @@
         display: none
 
 #nav
-  position: absolute
+  position: fixed
+  transition: .3s
   top: 0
   z-index: 90
   display: flex
   align-items: center
-  padding: 0 36px
+  padding 0 calc((100% - 1400px + 3rem) / 2)
   width: 100%
   height: 60px
-  font-size: 1.3em
-  opacity: 0
-  transition: all .5s
+  opacity: 1
+  justify-content: space-between;
+  outline: 1px solid var(--anzhiyu-none);
+  i
+    font-size: 1.2rem
+    font-weight: bold
 
   +maxWidth768()
     padding: 0 16px
-
-  #page-name
-    position: relative
-    padding: 10px 30px
-
-    +maxWidth870()
-      display: none
-
-    &::before
-      font-size: 18px
-      position: absolute
-      width: 100%
-      height: 100%
-      border-radius: 12px
-      color: var(--liushen-text)
-      top: 0
-      left: 0
-      content: '回到顶部'
-      background-color: var(--liushen-card-bg)
-      transition: all .3s
-      -webkit-transition: all .3s
-      -moz-transition: all .3s
-      -ms-transition: all .3s
-      -o-transition: all .3s
-      opacity: 0
-      line-height: 45px
-      /* 添加边框 */
-      border: 1px solid var(--liushen-card-border)
-
-    &:hover
-      &::before
-        opacity: 1
-
-  &.show
-    opacity: 1
-    display: flex
-    justify-content: center
-
-    &:not(.hide-menu)
-      .menus_item_child li:not(#sidebar-menus li)
-        float: left
-        border-radius: 13px !important
-        -webkit-border-radius: 13px !important
-        -moz-border-radius: 13px !important
-        -ms-border-radius: 13px !important
-        -o-border-radius: 13px !important
-
-      .menus_item_child:not(#sidebar-menus ul)
-        left: 50%
-        translate: -50%
-
-
-  #blog-info
-    flex: 1
-    color: var(--light-grey)
-    @extend .limit-one-line
-
-    .site-icon
-      margin-right: 6px
-      height: 36px
-      vertical-align: middle
-    
-    .nav-page-title
-      display: none
-
-  #nav-right
-    flex: 1
-    justify-content: flex-end
-    margin-left: auto
-    display: flex
-    flex-wrap: nowrap
-
-    & > div
-      padding: 0 14px 0 0
-
-      .site-page
-        font-size: initial
 
   #toggle-menu
     display: none
     padding: 2px 0 0 6px
     vertical-align: top
+    border-radius: 50px;
 
     &:hover
-      color: var(--white)
+      color: var(--white) !important
+  #blog_name,
+  .mask-name-container,
+  #menus,
+  #nav-right .nav-button,
+  #nav-right #toggle-menu
+    a
+      color: var(--light-grey)
+      &:hover
+        color: var(--white)
 
-  a,
-  span.site-page
-    color: var(--light-grey)
-
-    &:hover
-      color: var(--white)
-
-  .site-name
-    text-shadow: 2px 2px 4px rgba($dark-black, .15)
+  #site-name
     font-weight: bold
-
-  #name-container
-    transition: opacity 1.2s ease, transform 1.2s ease
-    opacity: 0 // 初始化为隐藏
-    transform: translateY(-80px) // 向上移动一些，使其开始时不可见
-    z-index: 1 // 初始化层级为 1
-    position: absolute // 让元素在同一位置上叠加
-
-    &.visible
-      opacity: 1
-      z-index: 2
-      transform: translateY(0) // 移动到原来的位置
+    cursor: pointer
+    transition: .3s !important
 
   .menus_items
     display: inline
-    transition: opacity 1.2s ease, transform 1.2s ease
-    opacity: 0
-    transform: translateY(-80px)
-    z-index: 1
-    position: absolute
-
-    &.visible
-      opacity: 1
-      z-index: 2
-      transform: translateY(0)
+    font-size: 1.3em
 
     .menus_item
-      position: relative
-      display: inline-block
-      padding: 0 0 0 14px
-
+      padding 0 0.4rem
+      display flex
+      flex-direction column
+      align-items center
+      margin auto
+      position relative
+      border-radius: 30px;
+      &:first-child .menus_item_child::after
+        position: absolute;
+        top: -60px;
+        left: 0;
+        width: 50%;
+        height: 60px;
+        content: "";
+      &:last-child .menus_item_child::after
+        position: absolute;
+        top: -60px;
+        right: 0;
+        width: 50%;
+        height: 60px;
+        content: "";
       &:hover
         .menus_item_child
-          display: block
-          margin-top: 14px
-          padding: 7px 7px
-          border-radius: 20px
-        
-          li
-            a
-              padding-top: 6px;
-              padding-right: 18px
-              padding-bottom: 6px
-              padding-left: 15px
-              text-align: center
+          border: var(--style-border-hover);
+          box-shadow: var(--anzhiyu-shadow-main);
+          opacity: 1;
+          pointer-events: all;
+          transform: translateY(0) scale(1);
 
-        & > span > i:last-child
+        & > a > i:last-child
           transform: rotate(180deg)
 
-      & > span > i:last-child
+      & > a > i:last-child
         padding: 4px
-        transition: transform .3s
+        transition: transform .2s
 
       .menus_item_child
         position: absolute
-        right: 0
-        display: none
-        margin-top: 8px
-        padding: 0
+        opacity 0
         width: max-content
-        background-color: var(--menu-child-bg)
-        box-shadow: 0 5px 20px -4px rgba($dark-black, .5)
-        animation: sub_menus .3s .1s ease both
-        addBorderRadius(5)
-
+        border-radius 5px
+        top 35px
+        box-shadow var(--anzhiyu-shadow-black)
+        border var(--style-border)
+        transition 0.2s
+        background-color var(--anzhiyu-card-bg)
+        border-radius 50px
+        right auto
+        left auto
+        padding 6px 4px
+        box-sizing content-box
+        line-height 35px
+        transform: translateY(-10px) scale(0);
+        transform-origin: top;
+        pointer-events: none
+        margin-top: 8px
         &:before
           position: absolute
-          top: -8px
+          top: -12px
           left: 0
           width: 100%
-          height: 20px
+          height: 16px
           content: ''
 
         li
@@ -483,55 +592,214 @@
           &:hover
             background: var(--text-bg-hover)
 
-          if hexo-config('rounded_corners_ui')
-            &:first-child
-              border-top-left-radius: 5px
-              border-top-right-radius: 5px
+          &:first-child
+            border-top-left-radius: 50px
+            border-top-right-radius: 50px
 
-            &:last-child
-              border-bottom-right-radius: 5px
-              border-bottom-left-radius: 5px
+          &:last-child
+            border-bottom-right-radius: 50px
+            border-bottom-left-radius: 50px
 
           a
             display: inline-block
-            padding: 8px 16px
+            padding: .5625rem 1rem
             width: 100%
             color: var(--font-color) !important
             text-shadow: none !important
+            &:hover
+              color: var(--anzhiyu-white) !important
+              padding: .125rem 1.25rem;
+              transform: scale(1) !important;
+              background: var(--anzhiyu-main)!important;
+              box-shadow: var(--anzhiyu-shadow-main);
+              transform: scale(1)!important;
 
   &.hide-menu
     #toggle-menu
       display: inline-block !important
-      padding-right: 0
+
+      .site-page
+        font-size: inherit
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i
+          font-size: 1.35rem;
 
     .menus_items
       display: none
 
-    #search-button span:not(.site-page)
+    #search-button span
       display: none
 
   #search-button
     display: inline
+    padding: 0 0 0 14px
 
   .site-page
     position: relative
-    padding-bottom: 14px
-    text-shadow: 1px 1px 2px rgba($dark-black, .3)
+    padding-bottom: 6px
     font-size: .78em
     cursor: pointer
+    &:hover
+      color: var(--anzhiyu-white) !important
 
-    &:not(.child)
-      &:after
-        position: absolute
-        bottom: 0
-        left: 0
-        z-index: -1
-        width: 0
-        height: 3px
-        background-color: lighten($theme-color, 30%)
-        content: ''
-        transition: all .3s ease-in-out
+@keyframes move-forever
+  0%
+    transform: translate3d(-90px, 0, 0);
+  100%
+    transform: translate3d(85px, 0, 0)
 
-      &:hover
-        &:after
-          width: 100%
+//波浪css
+if hexo-config('dynamicEffect') && hexo-config('dynamicEffect.postTopWave')
+  .main-hero-waves-area
+    width: 100%
+    position: absolute
+    left: 0
+    bottom: -11px
+    z-index: 5
+    pointer-events: none
+
+  .waves-area .waves-svg
+    width: 100%
+    height: 3.75rem
+
+  //Animation
+  .parallax > use
+    animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite
+    will-change: transform;
+
+  .parallax > use:nth-child(1)
+    animation-delay: -2s
+    animation-duration: 7s
+    fill: #f7f9febd
+
+  .parallax > use:nth-child(2)
+    animation-delay: -3s
+    animation-duration: 10s
+    fill: #f7f9fe82
+
+  .parallax > use:nth-child(3)
+    animation-delay: -4s
+    animation-duration: 13s
+    fill: #f7f9fe36
+
+  .parallax > use:nth-child(4)
+    animation-delay: -5s
+    animation-duration: 20s
+    fill: #f7f9fe
+
+  //黑色模式背景
+  [data-theme="dark"] .parallax 
+    & > use:nth-child(1)
+      fill: #18171dc8
+    & > use:nth-child(2)
+      fill: #18171d80
+    & > use:nth-child(3)
+      fill: #18171d3e
+    & > use:nth-child(4)
+      fill: rgb(0 0 0 / 39%)
+
+#post-firstinfo
+  text-align: left;
+  display: flex;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  +maxWidth768()
+    z-index 4
+
+  .meta-firstline
+    display: flex;
+    align-items: center;
+    height: 32px;
+
+    a.post-meta-original
+      background: var(--anzhiyu-white-op);
+      color: var(--anzhiyu-white);
+      padding: 0 0.7rem;
+      font-size: 0.9rem;
+      margin: auto;
+      border-radius: 8px;
+      font-weight: bold;
+      height: 32px;
+      line-height: 32px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+    span.post-meta-categories
+      color: var(--anzhiyu-white);
+      
+      font-size: 0.9rem;
+      margin: auto;
+      font-weight: bold;
+      height: 32px;
+      line-height: 32px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      i 
+       display: none
+
+      a.post-meta-categories
+        border-radius: 8px;
+        padding: 0 0.7rem;
+        background: var(--anzhiyu-white-op);
+        color: var(--anzhiyu-white);
+        font-size: 0.9rem;
+        width: 100%;
+        height: 100%;
+        font-weight: bold;
+        display: flex;
+        margin-left: .4rem
+    .article-meta.tags
+      margin-left: 1.2rem;
+      +maxWidth768()
+        display: none
+    .article-meta__tags
+      color: var(--anzhiyu-white);
+      opacity: 0.8;
+      margin-right: 8px;
+    .anzhiyu-icon-hashtag:before 
+      font-size: 17px;
+    .anzhiyu-icon-location-dot
+      margin-right: 4px
+#post
+  #post-info
+    #post-firstinfo
+      .meta-firstline 
+        a.post-meta-original
+          background: var(--anzhiyu-black)
+        a.post-meta-categories 
+          background: var(--anzhiyu-black)
+        .article-meta__tags
+          color: var(--anzhiyu-black)
++maxWidth768()
+  .layout > div:first-child:not(.recent-posts)
+    z-index: 10;
+  if hexo-config('mainTone.enable')
+    #page-header.post-bg #nav
+      background: linear-gradient(to top, var(--anzhiyu-main-none) 0%, var(--anzhiyu-bar-background) 100%);
+      transition: 0s
+  .post-bg:has(.bldbanner) #post-info:after,
+  .post-bg:has(.bili-banner) #post-info:after,
+  .post-bg:has(.blqbanner) #post-info:after
+    box-shadow: 0px -214px 287px 45px var(--anzhiyu-black-op) inset;
+  /*Shrinking for mobile*/
+  .waves-area .waves-svg
+    height: 40px;
+    min-height: 40px;
+  .main-hero-waves-area
+    display: none;
+    visibility: hidden;
+
+@keyframes showCover
+  0%
+    opacity: 0;
+    transform: rotate(10deg) translateY(-8%) scale(var(--anzhiyu-header-cover-scale));
+
+  100%
+    opacity: 0.5;
+    transform: rotate(10deg) translateY(-10%) scale(var(--anzhiyu-header-cover-scale));

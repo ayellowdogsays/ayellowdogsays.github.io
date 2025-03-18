@@ -1,7 +1,7 @@
 #article-container
   .timeline
-    margin: 0 10px 20px
-    padding: 14px 0 5px 20px
+    margin: 0 0 20px 10px
+    padding: 14px 20px 5px
     border-left: 2px solid var(--timeline-color, $theme-color)
 
     for $type in $color-types
@@ -57,8 +57,9 @@
       .timeline-item-content
         position: relative
         padding: 12px 15px
-        border-radius: 8px
-        background: var(--timeline-bg, lighten($theme-color, 85%))
+        border-radius: .5rem
+        // background: var(--timeline-bg, lighten($theme-color, 85%))
+        border: var(--style-border-always);
         font-size: .93em
 
         & > :last-child

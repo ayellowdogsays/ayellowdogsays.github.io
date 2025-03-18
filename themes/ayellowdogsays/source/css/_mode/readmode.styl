@@ -2,7 +2,7 @@ if hexo-config('readmode')
   .read-mode
     --font-color: #4c4948
     --readmode-light-color: #fff
-    --white: #4c4948
+    --white: var(--anzhiyu-white)
     --light-grey: #4c4948
     --gray: #d6dbdf
     --hr-border: #d6dbdf
@@ -37,11 +37,11 @@ if hexo-config('readmode')
       z-index: 100
       width: 40px
       height: 40px
+      border-radius: 8px
       background: var(--exit-btn-bg)
       color: var(--exit-btn-color)
       font-size: 16px
       transition: background .3s
-      addBorderRadius(8)
 
       +maxWidth768()
         top: initial
@@ -53,8 +53,20 @@ if hexo-config('readmode')
     #aside-content
       display: none
 
+    #post-firstinfo .meta-firstline
+      a.post-meta-original
+        color: var(--white) !important
+      a.post-meta-categories
+        color: var(--white) !important
+      a.article-meta__tags
+        color: var(--white) !important
+
+    #post-info #post-meta
+      color: var(--white) !important
+
     #page-header.post-bg
-      background: none !important
+      background-color: transparent
+      background-image: none !important
 
       &:before
         opacity: 0
@@ -105,7 +117,7 @@ if hexo-config('readmode')
           color: var(--font-color) !important
 
         .hljs
-          background: var(--highlight-bg) !important
+          background: var(-highlight-bg) !important
 
       h1,
       h2,
@@ -167,7 +179,7 @@ if hexo-config('readmode')
         border: 1px solid var(--gray) !important
 
       .hide-button,
-      .btn-beautify,
+      .btn-anzhiyu,
       .hl-label
         border: 1px solid var(--gray) !important
         background: var(--readmode-light-color) !important

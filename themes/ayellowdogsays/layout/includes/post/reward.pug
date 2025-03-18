@@ -1,12 +1,18 @@
-.post-reward
-  .reward-button
-    i.fas.fa-qrcode
-    = theme.reward.text || _p('donate')
+.post-reward(onclick='anzhiyu.addRewardMask()')
+  .reward-button.button--animated(title='赞赏作者')
+    i.anzhiyufont.anzhiyu-icon-hand-heart-fill
+    | 打赏作者
   .reward-main
-    ul.reward-all
-      each item in theme.reward.QR_code
-        - const clickTo = item.link || item.img
-        li.reward-item
-          a(href=url_for(clickTo) target='_blank')
-            img.post-qr-code-img(src=url_for(item.img) alt=item.text)
-          .post-qr-code-desc=item.text
+    .reward-all
+      span.reward-title 感谢你赐予我前进的力量
+      ul.reward-group
+        each item in theme.reward.QR_code
+          - var clickTo = item.link ? item.link : item.img
+          li.reward-item
+            a(href=url_for(clickTo) target='_blank')
+              img.post-qr-code-img(src=url_for(item.img) alt=item.text)
+            .post-qr-code-desc=item.text
+      a.reward-main-btn(href='/about/#about-reward' target='_blank')
+        .reward-text 赞赏者名单
+        .reward-dec 因为你们的支持让我意识到写文章的价值🙏
+#quit-box(onclick="anzhiyu.removeRewardMask()" style="display: none")

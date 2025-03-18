@@ -1,16 +1,18 @@
-if theme.Open_Graph_meta.enable
-  -
-    const coverVal = page.cover_type === 'img' ? page.cover : theme.avatar.img
-    let ogOption = Object.assign({
-      type: is_post() ? 'article' : 'website',
-      image: coverVal ? full_url_for(coverVal) : '',
-      fb_admins: theme.facebook_comments.user_id || '',
-      fb_app_id: theme.facebook_comments.app_id || '',
-    }, theme.Open_Graph_meta.option)
-  -
-  != open_graph(ogOption)
-else
-  - const description = page.description || page.content || page.title || config.description
-  if description
-    meta(name="description" content=truncate(description, 150))
+if theme.Open_Graph_meta
+  - let contentType = is_post() ? 'article' : 'website'
+  - let metaImage = (page.cover || theme.avatar.img) ? full_url_for(page.cover || theme.avatar.img) : ''
+
+  meta(property="og:type", content=contentType)
+  meta(property="og:title", content=pageTitle)
+  meta(property="og:url", content=theme.post_copyright.decode ? decodeURI(url) : url)
+  meta(property="og:site_name", content=config.title)
+  meta(property="og:description", content=page_description())
+  meta(property="og:locale", content=config.language)
+  meta(property="og:image", content=metaImage)
+  meta(property="article:author" content=config.author)
+  meta(property="article:tag" content=config.keywords)
+  meta(name="twitter:card", content="summary")
+  meta(name="twitter:image", content=metaImage)
+
+meta(name="description" content=page_description())
 

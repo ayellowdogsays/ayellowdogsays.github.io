@@ -1,64 +1,59 @@
--
-  const returnTopImg = img => img !== false ? img || theme.default_top_img : false
-  const isFixedClass = theme.nav.fixed ? ' fixed' : ''
-  var top_img = false
-  let headerClassName = 'not-top-img'
-  var bg_img = ''
-
 if !theme.disable_top_img && page.top_img !== false
   if is_post()
-    - top_img = page.top_img || page.cover || theme.default_top_img
+    - var top_img = page.top_img || page.cover || page.randomcover
   else if is_page()
-    - top_img = page.top_img || theme.default_top_img
-  else if is_tag()
-    - top_img = theme.tag_per_img && theme.tag_per_img[page.tag]
-    - top_img = top_img || returnTopImg(theme.tag_img)
-  else if is_category()
-    - top_img = theme.category_per_img && theme.category_per_img[page.category]
-    - top_img = top_img || returnTopImg(theme.category_img)
+    - var top_img = page.top_img || theme.default_top_img
   else if is_home()
-    - top_img = returnTopImg(theme.index_img)
-  else if is_archive()
-    - top_img = returnTopImg(theme.archive_img)
+    - var top_img = theme.index_img !== false ? theme.index_img || theme.default_top_img : false
+    - var home_index_img = theme.index_img !== false ? theme.index_img || theme.default_top_img : false
   else
-    - top_img = page.top_img || theme.default_top_img
+    - var top_img = page.top_img || theme.default_top_img
 
   if top_img !== false
-    - bg_img = getBgPath(top_img)
-    - headerClassName = is_home() ? 'full_page' : is_post() ? 'post-bg' : 'not-home-page'
-    
-header#page-header(class=`${headerClassName + isFixedClass}` style=bg_img)
-  include ./nav.pug
+    - var imgSource = top_img && top_img.indexOf('/') !== -1 ? url_for(top_img) : top_img
+    - var bg_img = top_img ? imgSource : ''
+    - var home_index_img_bg = home_index_img ? home_index_img : ''
+    - var site_title = page.title || page.tag || page.category || config.title
+    - var isHomeClass = is_home() ? 'full_page' : 'not-home-page'
+    - is_post() ? isHomeClass = 'post-bg' : isHomeClass
+  else
+    - var isHomeClass = 'not-top-img'
+else
+  - var top_img = false
+  - var isHomeClass = 'not-top-img'
+header#page-header(class=`${isHomeClass}` style=home_index_img_bg)
+  !=partial('includes/header/nav', {}, {cache: true})
   if top_img !== false
     if is_post()
-      include ./post-info.pug
-      section.main-hero-waves-area.waves-area
-        svg.waves-svg(xmlns='http://www.w3.org/2000/svg', xlink='http://www.w3.org/1999/xlink', viewBox='0 24 150 28', preserveAspectRatio='none', shape-rendering='auto')
-          defs
-            path#gentle-wave(d='M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z')
-          g.parallax
-            use(href='#gentle-wave', x='48', y='0')
-            use(href='#gentle-wave', x='48', y='3')
-            use(href='#gentle-wave', x='48', y='5')
-            use(href='#gentle-wave', x='48', y='7')
-    else if is_home()
+      if page.bilibili_bg
+        !=partial('includes/bili-banner/index')
+      else
+        include ./post-info.pug
+        if theme.dynamicEffect && theme.dynamicEffect.postTopWave
+          section.main-hero-waves-area.waves-area
+            svg.waves-svg(xmlns='http://www.w3.org/2000/svg', xlink='http://www.w3.org/1999/xlink', viewBox='0 24 150 28', preserveAspectRatio='none', shape-rendering='auto')
+              defs
+                path#gentle-wave(d='M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z')
+              g.parallax
+                use(href='#gentle-wave', x='48', y='0')
+                use(href='#gentle-wave', x='48', y='3')
+                use(href='#gentle-wave', x='48', y='5')
+                use(href='#gentle-wave', x='48', y='7')
+        #post-top-cover
+          img#post-top-bg(class='nolazyload' src=bg_img)
+
+    else if is_home() 
       #site-info
-        .info_title_avatar
-          img#site-info-avatar(src=url_for(theme.info_title_avatar) onerror=`this.onerror=null;this.src='` + url_for(theme.error_img.flink) + `'` alt="avatar")
-        h1#site-title=theme.info_title
+        h1#site-title=site_title
         if theme.subtitle.enable
           - var loadSubJs = true
           #site-subtitle
             span#subtitle
-        if theme.social
+        if(theme.social)
           #site_social_icons
-            !=partial('includes/header/social', {}, {cache: true})
+            !=fragment_cache('social', function(){return partial('includes/header/social')})
       #scroll-down
-        i.fas.fa-angle-down.scroll-down-effects
+        i.anzhiyufont.anzhiyu-icon-angle-down.scroll-down-effects
     else
       #page-site-info
-        h1#site-title=page.title || page.tag || page.category
-  else
-    //- improvement seo
-    if !is_post()
-      h1.title-seo=page.title || page.tag || page.category || config.title
+        h1#site-title=site_title

@@ -1,34 +1,35 @@
 extends includes/layout.pug
 
 block content
-  - const noCardLayout = ['shuoshuo', '404'].includes(page.type) ? 'nc' : ''
-  - var commentsJsLoad = false 
-
-  mixin commentLoad
-    if page.comments !== false && theme.comments.use
-      - commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
-
-  #page(class=noCardLayout)
-    if top_img === false && page.title
-      page-title= page.title
-
+  #page
+    if top_img === false && !page.top_single
+      h1.page-title= page.title
     case page.type
       when 'tags'
         include includes/page/tags.pug
-        +commentLoad
       when 'link'
         include includes/page/flink.pug
-        +commentLoad
       when 'categories'
         include includes/page/categories.pug
-        +commentLoad
-      when '404'
-        include includes/page/404.pug
-      when 'devices'
-        include includes/page/devices.pug
-      when 'shuoshuo'
-        include includes/page/shuoshuo.pug
+      when 'essay'
+        include includes/page/essay.pug
+      when 'room'
+        include includes/page/room.pug
+      when 'about'
+        include includes/page/about.pug
+      when 'album'
+        include includes/page/album.pug
+      when 'fcircle'
+        include includes/page/fcircle.pug
+      when 'album_detail'
+        include includes/page/album_detail.pug
+      when 'music'
+        include includes/page/music.pug
+      when 'equipment'
+        include includes/page/equipment.pug
       default
         include includes/page/default-page.pug
-        +commentLoad
+
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})

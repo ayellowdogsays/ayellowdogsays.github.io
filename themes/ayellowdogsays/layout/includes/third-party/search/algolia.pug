@@ -3,20 +3,19 @@
     nav.search-nav
       span.search-dialog-title= _p('search.title')
       button.search-close-button
-        i.fas.fa-times
+        i.anzhiyufont.anzhiyu-icon-xmark
 
     .search-wrap
       #algolia-search-input
       hr
       #algolia-search-results
         #algolia-hits
+          if theme.algolia_search.enable && theme.algolia_search.tags
+            each item, index in theme.algolia_search.tags
+              a.tag-list(href=url_for("/tags/" + item), title=item)=item
         #algolia-pagination
         #algolia-info
           .algolia-stats
           .algolia-poweredBy
   
   #search-mask
-
-  script(src=url_for(theme.asset.algolia_search))
-  script(src=url_for(theme.asset.instantsearch))
-  script(src=url_for(theme.asset.algolia_js))

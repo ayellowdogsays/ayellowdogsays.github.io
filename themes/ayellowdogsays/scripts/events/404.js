@@ -1,5 +1,5 @@
 /**
- * Butterfly
+ * AnZhiYu
  * 404 error page
  */
 
@@ -12,9 +12,7 @@ hexo.extend.generator.register('404', function (locals) {
     layout: ['page'],
     data: {
       type: '404',
-      top_img: false,
-      comments: false,
-      aside: false
+      top_img: false
     }
   }
 })

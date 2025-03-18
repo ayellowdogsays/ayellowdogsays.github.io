@@ -1,36 +1,57 @@
+.post .layout#content-inner
+  +maxWidth768()
+    background: var(--anzhiyu-main);
 #body-wrap
   display: flex
   flex-direction: column
   min-height: 100vh
-
+  justify-content: space-between;
+  +maxWidth768()
+    .layout
+      padding: 0;
+    #archive
+      background: var(--anzhiyu-background)
+      border: none
+      padding-top: 0px
+  
 .layout
   display: flex
   flex: 1 auto
   margin: 0 auto
-  padding: 20px 15px 40px 15px
+  padding: 1.25rem 1.5rem
   max-width: 1200px
   width: 100%
+  justify-content: center;
 
-  +maxWidth900()
+  +maxWidth1200()
     flex-direction: column
+    padding-top: 10px
 
   +maxWidth768()
-    padding: 15px 5px
+    padding: 20px 15px;
+    z-index: 3
 
   +minWidth2000()
-    max-width: 70%
+    max-width: 1700px
 
-  & > div:first-child:not(.nc)
-    @extend .cardHover
-    align-self: flex-start
-    padding: 50px 40px
+  & > div:first-child:not(.recent-posts)
+    box-shadow: var(--anzhiyu-shadow-border);
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    background: var(--anzhiyu-card-bg);
+    border: var(--style-border);
+    width: calc(100% - 300px);
+    align-self: flex-start;
+    animation: slide-in 0.6s 0.1s backwards;
 
     +maxWidth768()
-      padding: 36px 14px
+      padding: 1rem 1rem;
+      box-shadow: none;
+      background: var(--anzhiyu-background);
 
   & > div:first-child
-    width: 74%
-    transition: all .3s
+    width: calc(100% - 300px)
+    transition: all .3s ease 0s
 
     +maxWidth900()
       width: 100% !important
@@ -41,10 +62,10 @@
 
   // 隱藏aside
   &.hide-aside
-    max-width: 1200px
+    max-width: 1000px
 
     +minWidth2000()
-      max-width: 1300px
+      max-width: 1200px
 
     & > div
       width: 100% !important

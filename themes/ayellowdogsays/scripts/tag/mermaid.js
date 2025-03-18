@@ -1,5 +1,5 @@
 /**
- * Butterfly
+ * AnZhiYu
  * mermaid
  * https://github.com/mermaid-js/mermaid
  */
@@ -8,7 +8,7 @@
 
 const { escapeHTML } = require('hexo-util')
 
-const mermaid = (args, content) => {
+function mermaid (args, content) {
   return `<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
   ${escapeHTML(content)}
   </pre></div>`

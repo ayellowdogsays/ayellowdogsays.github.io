@@ -1,28 +1,63 @@
 if theme.post_copyright.enable && page.copyright !== false
-  - const author = page.copyright_author ? page.copyright_author : config.author
-  - const url = page.copyright_url ? page.copyright_url : page.permalink
+  - let author = page.copyright_author || config.author
+  - let url = page.copyright_url || page.permalink
+  - let info = page.copyright_info || _p('post.copyright.copyright_content', theme.post_copyright.license_url, theme.post_copyright.license, config.url, config.title)
   .post-copyright
-    .post-copyright__title
-      span.post-copyright-info
-        h #[=page.title]
-    .post-copyright__type
-      span.post-copyright-info
-        a(href=url_for(url))= theme.post_copyright.decode ? decodeURI(url) : url
-    .post-copyright-m
-      .post-copyright-m-info(style="position: relative;z-index: 3")
-        .post-copyright-a(style="display: inline-block;width: fit-content;margin: 20px 20px 20px 0")
-            h 作者
-            .post-copyright-cc-info
-                h=author
-        .post-copyright-c(style="display: inline-block;width: fit-content;margin: 20px 20px 20px 0")
-            h 发布于
-            .post-copyright-cc-info
-                h=date(page.date, config.date_format)
-        .post-copyright-u(style="display: inline-block;width: fit-content;margin: 20px 20px 20px 0")
-            h 更新于
-            .post-copyright-cc-info
-                h=date(page.updated, config.date_format)
-        .post-copyright-c(style="display: inline-block;width: fit-content;margin: 20px 20px 20px 0")
-            h 许可协议
-            .post-copyright-cc-info
-                a(rel='noopener' target='_blank' title=' CC BY 4.0' href='https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1') CC BY-NC-SA 4.0
+    .copyright-cc-box
+      i.anzhiyufont.anzhiyu-icon-copyright
+    .post-copyright__author_box
+      - let copyright_author_img_back = theme.post_copyright.copyright_author_img_back ? theme.post_copyright.copyright_author_img_back : theme.avatar.img
+      - let copyright_author_img_front = theme.post_copyright.copyright_author_img_front ? theme.post_copyright.copyright_author_img_front : theme.avatar.img
+      - let copyright_author_link = theme.post_copyright.copyright_author_link ? theme.post_copyright.copyright_author_link : '/'
+      a.post-copyright__author_img(href=url_for(copyright_author_link) title='头像')
+        img.post-copyright__author_img_back(src=url_for(copyright_author_img_back) title='头像' alt='头像')
+        img.post-copyright__author_img_front(src=url_for(copyright_author_img_front) title="头像" alt='头像')
+      .post-copyright__author_name=author
+      .post-copyright__author_desc=config.subtitle
+    .post-copyright__post__info
+      if (page.copyright_author && page.copyright_author !== config.author)
+        a.post-copyright__reprint(title="该文章为转载文章，注意版权协议" href=url_for(url)) 转载
+      else
+        a.post-copyright__original(title="该文章为原创文章，注意版权协议" href=url_for(url)) 原创
+      a.post-copyright-title
+        span(onclick=`rm.copyPageUrl('${theme.post_copyright.decode ? decodeURI(url) : url}')`)=pageTitle
+    //- ptool
+    if theme.ptool.enable
+      include ./ptool.pug
+    .post-copyright__notice
+      span.post-copyright-info!= info
+  .post-tools-right
+    if (!theme.ptool.categories)
+      .tag_share
+        .post-meta__box
+          if (theme.post_meta.post.tags)
+            .post-meta__box__tag-list
+              each item, index in page.tags.data
+                a(href=url_for(item.path)).post-meta__box__tags
+                  span.tags-punctuation 
+                    i.anzhiyufont.anzhiyu-icon-tag
+                  =item.name
+                  span.tagsPageCount=item.length
+
+      !=partial('includes/third-party/share/index.pug', {}, {cache: true})
+    else
+      .tag_share
+        .post-meta__box
+          if (page.categories.data.length > 0)
+            .post-meta__box__category-list
+              each item, index in page.categories.data
+                a(href=url_for(item.path)).post-meta__box__categoryes
+                  span.categoryes-punctuation 
+                    i.anzhiyufont.anzhiyu-icon-inbox
+                  =item.name
+                  span.categoryesPageCount=item.length
+          if (theme.post_meta.post.tags)
+            .post-meta__box__tag-list
+              each item, index in page.tags.data
+                a(href=url_for(item.path)).post-meta__box__tags
+                  span.tags-punctuation 
+                    i.anzhiyufont.anzhiyu-icon-tag
+                  =item.name
+                  span.tagsPageCount=item.length
+
+        !=partial('includes/third-party/share/index.pug', {}, {cache: true})

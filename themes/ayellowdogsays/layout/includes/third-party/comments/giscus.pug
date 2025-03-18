@@ -1,11 +1,13 @@
-- const { use, lazyload } = theme.comments
-- const { repo, repo_id, category_id, light_theme, dark_theme, js, option } = theme.giscus
-- const giscusUrl = js || 'https://giscus.app/client.js'
+- const { repo, repo_id, category_id, theme:themes, option } = theme.giscus
+- const giscusUrl = 'https://giscus.app/client.js'
 - const giscusOriginUrl = new URL(giscusUrl).origin
+- const { use, lazyload } = theme.comments
 
 script.
   (()=>{
-    const getGiscusTheme = theme => theme === 'dark' ? '!{dark_theme}' : '!{light_theme}'
+    const getGiscusTheme = theme => {
+      return theme === 'dark' ? '!{themes.dark}' : '!{themes.light}'
+    }
 
     const loadGiscus = () => {
       const config = Object.assign({
@@ -13,7 +15,6 @@ script.
         'data-repo': '!{repo}',
         'data-repo-id': '!{repo_id}',
         'data-category-id': '!{category_id}',
-        'data-mapping': 'pathname',
         'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
         'data-reactions-enabled': '1',
         crossorigin: 'anonymous',
@@ -28,25 +29,25 @@ script.
     }
 
     const changeGiscusTheme = theme => {
-      const iframe = document.querySelector('#giscus-wrap iframe')
-      if (iframe) {
-        const message = {
-          giscus: {
-            setConfig: {
-              theme: getGiscusTheme(theme)
-            }
-          }
-        }
-        iframe.contentWindow.postMessage(message, '!{giscusOriginUrl}')
+      const sendMessage = message => {
+        const iframe = document.querySelector('iframe.giscus-frame')
+        if (!iframe) return
+        iframe.contentWindow.postMessage({ giscus: message }, '!{giscusOriginUrl}')
       }
+
+      sendMessage({
+        setConfig: {
+          theme: getGiscusTheme(theme)
+        }
+      });
     }
 
-    btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+    anzhiyu.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
 
     if ('!{use[0]}' === 'Giscus' || !!{lazyload}) {
-      if (!{lazyload}) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+      if (!{lazyload}) anzhiyu.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
       else loadGiscus()
     } else {
-      window.loadOtherComment= loadGiscus
+      window.loadOtherComment = loadGiscus
     }
   })()

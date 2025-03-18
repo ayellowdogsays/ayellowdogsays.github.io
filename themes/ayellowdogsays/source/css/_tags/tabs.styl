@@ -1,38 +1,49 @@
+
 #article-container
   .tabs
     position: relative
-    background: var(--card-bg)
     margin: 0 0 20px
-    border: 1px solid var(--liushen-card-border)
-    addBorderRadius()
-    overflow: hidden
+    border: 3px solid var(--anzhiyu-secondbg)
+    margin: 1rem 0 !important;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--anzhiyu-shadow-border);
+    background: var(--anzhiyu-card-bg);
+    padding: 8px
 
     > .nav-tabs
       display: flex
       flex-wrap: wrap
+      justify-content: center;
       margin: 0
-      padding: 0
-      background: var(--tab-botton-bg)
-      border-bottom: 1px solid var(--liushen-card-border)
+      padding: 16px;
+      background: var(--anzhiyu-card-bg);
 
       > .tab
-        flex-grow: 1
         padding: 8px 18px
-        background: var(--tab-botton-bg)
-        color: var(--tab-botton-color)
-        line-height: 2
+        background: var(--anzhiyu-secondbg);
+        color: var(--anzhiyu-fontcolor);
+        line-height: 1
         transition: all .4s
+        margin: 4px;
+        border: var(--style-border-always);
+        border-radius: 8px;
 
         i
           width: 1.5em
 
         &.active
-          background: var(--tab-button-active-bg)
-          cursor: default
+          border: var(--style-border-hover-always);
+          background: var(--anzhiyu-background);
+          border-radius: 8px;
+          cursor: default;
 
         &:not(.active)
           &:hover
-            background: var(--tab-button-hover-bg)
+            background: var(--anzhiyu-main);
+            color: var(--anzhiyu-white);
+            transition: .3s;
+            border: var(--style-border-hover-always);
 
       &.no-default
         & ~ .tab-to-top
@@ -42,17 +53,16 @@
       .tab-item-content
         position: relative
         display: none
-        padding: 36px 24px 10px
+        background: var(--anzhiyu-background);
+        border: var(--style-border-always);
+        padding: 1.2rem 1.2rem;
+        border-radius: 8px;
 
         +maxWidth768()
           padding: 24px 14px
 
         &.active
           display: block
-          animation: tabshow .5s
-
-        > :last-child
-          margin-bottom: 0
 
     > .tab-to-top
       padding: 0 16px 10px 0

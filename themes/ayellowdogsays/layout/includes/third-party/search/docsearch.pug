@@ -1,4 +1,4 @@
-- const { placeholder, docsearch: { appId, apiKey, indexName, option } } = theme.search
+- const { appId, apiKey, indexName, option } = theme.docsearch
 
 .docsearch-wrap
   #docsearch(style="display:none")
@@ -11,7 +11,6 @@
         apiKey: '!{apiKey}',
         indexName: '!{indexName}',
         container: '#docsearch',
-        placeholder: '!{ placeholder || _p("search.input_placeholder")}',
       }, !{JSON.stringify(option)}))
 
       const handleClick = () => {
@@ -19,11 +18,9 @@
       }
 
       const searchClickFn = () => {
-        btf.addEventListenerPjax(document.querySelector('#search-button > .search'), 'click', handleClick)
+        anzhiyu.addEventListenerPjax(document.querySelector('#search-button > .search'), 'click', handleClick)
       }
 
       searchClickFn()
       window.addEventListener('pjax:complete', searchClickFn)
     })()
-
-

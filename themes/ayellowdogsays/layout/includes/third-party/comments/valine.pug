@@ -23,16 +23,15 @@ script.
     const loadValine = async () => {
       if (typeof Valine === 'function') initValine()
       else {
-        await btf.getScript('!{url_for(theme.asset.valine)}')
+        await getScript('!{url_for(theme.asset.valine)}')
         initValine()
       }
     }
 
     if ('!{use[0]}' === 'Valine' || !!{lazyload}) {
-      if (!{lazyload}) btf.loadComment(document.getElementById('vcomment'),loadValine)
+      if (!{lazyload}) anzhiyu.loadComment(document.getElementById('vcomment'),loadValine)
       else setTimeout(loadValine, 0)
     } else {
       window.loadOtherComment = loadValine
     }
   })()
-
