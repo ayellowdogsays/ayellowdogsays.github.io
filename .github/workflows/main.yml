@@ -33,6 +33,8 @@ jobs:
              npm install --save hexo-helper-live2d
              npm install live2d-widget-model-tororo 
              npm un hexo-tag-aplayer
+      - name: Restore file modification time 🕒
+        run: find source/_posts -name '*.md' | while read file; do touch -d "$(git log -1 --format="@%ct" "$file")" "$file"; done
       - name: Build
         run: npm run build
       - name: Upload Pages artifact
