@@ -32,12 +32,12 @@ menubar:
       - id: post
         title: 阿黄说
         url: /
-      - id: explore
-        title: 狗友
-        url: /about/
-      - id: social
-        title: 说说说说
+      - id: wiki
+        title: 阿黄
         url: /says/
+      - id: social
+        title: 阿黄友
+        url: /friends/
 
 
 ######## Main ########
@@ -189,8 +189,24 @@ search:
     js: https://gcore.jsdelivr.net/algoliasearch/3/algoliasearch.min.js
 
 
+######## Comments ########
+######## Comments ########
+comments:
+  service: waline # beaudar, utterances, giscus, twikoo, waline, artalk
+  comment_title: 快来参与讨论吧~
 
-
+  # Waline
+  # https://waline.js.org/
+  waline:
+    js: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js
+    css: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css
+    meta_css: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css
+    # Waline server address url, you should set this to your own link
+    serverURL: https://talk.laogoupro.us.kg/
+    locale:
+      placeholder:
+        😎嗨，朋友，留下脚印再走呗。
+    reaction: true
 
 
 
@@ -203,13 +219,13 @@ footer:
         url: /
       music:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3845874.svg"/>'
-        url: /friends/
+        url: /news/
       unsplash:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3616429.svg"/>'
-        url: /about/
+        url: /air-/
       comments:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/>'
-        url: /says/#comments
+        url: /about123/#comments
       theme:
         icon: default:theme
         onclick: 'switchTheme()'
@@ -217,7 +233,7 @@ footer:
       '博客':
         - '[近期](/)'
         - '[分类](/tags/)'
-        - '[标签](/tags/)'
+        - '[标签](/air-/)'
       '社交':
         - '[友链](/friends/)'
       '更多':
@@ -392,7 +408,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: true
+    enable: false
     js: /customize/js/2.js"
     distance: 16px
     duration: 800 # ms
@@ -546,7 +562,9 @@ api_host:
 # 自定义引入css,js
 inject:
   head:
-    - <link rel="stylesheet" href="/customize/css/pace.css"> # 网站进度条加载cript type="text/javascript" src="/customize/js/pace.min.js"></script> # 网站进度条加载
+    - <link rel="stylesheet" href="/customize/css/pace.css"> # 网站进度条加载
+  script:
+    - <script type="text/javascript" src="/customize/js/pace.min.js"></script> # 网站进度条加载
     - <script type="text/javascript" src="https://www.flyalready.cn/js/effectsonclick.js"></script> # 网站进度条加载
     - <script type="text/javascript" src="/customize/js/headend.js"></script> # 网站进度条加载
     - <script type="text/javascript" src="/customize/js/load.js"></script> # 网站进度条加载

@@ -49,10 +49,9 @@ page:
     why: 可能是输入地址有误或该地址已被删除
     action: 返回主页
 
-
 search:
   search: 搜索
-  tip: Power by 阿黄说·
+  tip: Power by 阿黄说
   search_in: 在 %s 中搜索
   no_results: 空空如也
 
