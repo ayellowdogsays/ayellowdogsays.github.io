@@ -189,11 +189,7 @@ search:
     js: https://gcore.jsdelivr.net/algoliasearch/3/algoliasearch.min.js
 
 
-######## Comments ########
-comments:
-  service: twikoo
-  twikoo:
-    envId: https://twikkoo30pro.netlify.app/
+
 
 
 
