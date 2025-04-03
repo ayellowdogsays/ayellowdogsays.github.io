@@ -32,7 +32,7 @@ jobs:
              npm install hexo-butterfly-swiper --save
              npm install --save hexo-helper-live2d
              npm install live2d-widget-model-tororo 
-             npm un hexo-tag-aplayer
+             npm install hexo-generator-search --save
       - name: Build
         run: npm run build
       - name: Upload Pages artifact
