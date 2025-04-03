@@ -1,7 +1,11 @@
 ---
 title: 说说
 ---
-<div id="qexot"></div>
-<script src="https://registry.npmmirror.com/qexo-static/1.6.0/files/hexo/talks.js"></script>
-<link rel="stylesheet" href="https://registry.npmmirror.com/qexo-static/1.6.0/files/hexo/talks.css">
+
+
+
+
+<div id="qexot" class="tag-plugin timeline"></div>
+<script src="https://gcore.jsdelivr.net/gh/MSCMDD/Qexo-Talks@main/Stellar/qexo_talk.js"></script>
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/MSCMDD/Qexo-Talks@main/Stellar/qexo_talk.css">
 <script>showQexoTalks("qexot", "https://manage.ayellowdogsays.top", 5)</script>
