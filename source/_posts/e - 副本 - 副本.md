@@ -2,7 +2,7 @@
 abbrlink: '55630'
 categories:
 - - 美化、动手
-date: 2025/2/13
+date: '2025-02-15T18:38:48.352541+08:00'
 permalink: posts/11.html
 swiper_index: 2
 tags:
@@ -13,7 +13,7 @@ tags:
 - weekdaycare
 title: stellar主题修改
 top_img: https://img.picui.cn/free/2025/03/16/67d62e4e0aed9.png
-updated: '2025-03-14T09:58:44.975+08:00'
+updated: '2025-02-15T18:38:48.352541+08:00'
 ---
 # 开头
 
@@ -640,7 +640,7 @@ footer:
 
 # 添加鼠标光粒
 
-在`theme/stellar/source/js/xxx.js`下写
+在 `theme/stellar/source/js/xxx.js`下写
 
 ```js
 class Circle {
