@@ -815,7 +815,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId:  https://twikkoo30pro.netlify.app/
+  envId: https://twikkoo30pro.netlify.app/.netlify/functions/twikoo
   region:
   # 使用 Twikoo 访客计数作为页面浏览量
   visitor: false
