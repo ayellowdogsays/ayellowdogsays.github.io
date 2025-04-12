@@ -1,5 +1,5 @@
 logo:
-  avatar: "[{config.avatar}](/social/about/)"
+  avatar: "[{config.avatar}](about/)"
   title: "[{config.title}](/)"
   subtitle: "{config.subtitle}"
 # 站点主结构树
