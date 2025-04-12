@@ -190,7 +190,6 @@ search:
 
 
 ######## Comments ########
-######## Comments ########
 comments:
   service: waline # beaudar, utterances, giscus, twikoo, waline, artalk
   comment_title: 快来参与讨论吧~
@@ -408,7 +407,7 @@ plugins:
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:
-    enable: #true
+    enable: true
     js: https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
     distance: 16px
     duration: 800 # ms
