@@ -555,7 +555,11 @@ api_host:
 # 自定义引入css,js
 inject:
   head:
-    - <link rel="stylesheet" href="/css/pace.css"> # 网站进度条加载
+    - <link rel="stylesheet" href="/css/extra.css">
+    - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css"/>
   script:
-    - <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script> # 网站进度条加载
-    - <script src="https://www.vae.zhangweicheng.xyz/web/denglong.js?text=%E5%A5%BD%E5%A5%BD%E5%AD%A6%E4%B9%A0"></script>
+    - <script src="/js/extra.js"></script>
+    - <script src="/vendor/js/snow.js"></script>
+    - <script src="/vendor/js/lantern.js"></script>
+    - <script src="/js/dog.js"></script>
+    - <script data-website-id="91357f39-3d88-42f3-bf11-e1c1206ac8ab" src="https://logsphere.codepzj.cn/js/track.js"></script>
