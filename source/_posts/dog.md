@@ -9,7 +9,7 @@ updated: '2025-04-12T20:25:37.386+08:00'
 ---
 # 我的站点
 
-[个人主页](https://ayellowdogsays.top)
+[个人主页](https://www.ayellowdogsays.top)
 
 [博客](https://ayellowdogsays.top)
 
