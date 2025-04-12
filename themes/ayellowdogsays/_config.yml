@@ -219,13 +219,13 @@ footer:
         url: /
       music:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3845874.svg"/>'
-        url: /news/
+        url: /
       unsplash:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3616429.svg"/>'
-        url: /air-/
+        url: /about/
       comments:
         icon: '<img src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/>'
-        url: /about123/#comments
+        url: /settings/
       theme:
         icon: default:theme
         onclick: 'switchTheme()'
