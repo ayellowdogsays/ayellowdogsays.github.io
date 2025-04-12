@@ -2,9 +2,10 @@
 abbrlink: ''
 categories: []
 date: '2025-04-12T20:20:08.038325+08:00'
+permalink: posts/23566.html
 tags: []
 title: 我的站点
-updated: '2025-04-12T20:24:29.394+08:00'
+updated: '2025-04-12T20:25:37.386+08:00'
 ---
 # 我的站点
 
