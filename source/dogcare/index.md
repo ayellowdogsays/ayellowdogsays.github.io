@@ -2,7 +2,7 @@
 title: link
 date: 2020-12-01 22:19:45
 ---
-<div id="qexo-friends"></div>
+<div id="friend-content" class="friend-content"></div>
 <link rel="stylesheet" href="https://unpkg.com/qexo-friends/friends.css"/>
-<script src="https://registry.npmmirror.com/qexo-static/1.6.0/files/hexo/friends.js"></script>
-<script>loadQexoFriends("qexo-friends", "https://manage.ayellowdogsays.top")</script>
+<script src="https://unpkg.com/qexo-friends/Stellar/friends.js"></script>
+<script>loadQexoFriends("friend-content", "https://manage.ayellowdogsays.top")</script>
