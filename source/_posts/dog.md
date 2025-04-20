@@ -18,5 +18,5 @@ updated: '2025-04-13T08:50:26.019+08:00'
 [带壳截屏](https://picture.ayellowdogsays.top)
 
 [我的网盘](https://accepted-wrennie-yellog-a18755df.koyeb.app/)
-[我的思维导图](https://mind-map.ayellowdogsays.top/)
+
 
