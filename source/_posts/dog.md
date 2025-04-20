@@ -19,4 +19,4 @@ updated: '2025-04-20T18:47:18.233+08:00'
 
 [我的网盘](https://accepted-wrennie-yellog-a18755df.koyeb.app/)
 
-[画板]([draw.ayellowdogsays.top](https://draw.ayellowdogsays.top/))
+[画板](https://draw.ayellowdogsays.top/)
