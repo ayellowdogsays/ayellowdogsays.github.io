@@ -192,21 +192,16 @@ search:
 ######## Comments ########
 ######## Comments ########
 comments:
-  service: waline # beaudar, utterances, giscus, twikoo, waline, artalk
-  comment_title: 快来参与讨论吧~
+  service: artalk
+  # Artalk
+  # https://artalk.js.org/
+  artalk:
+    css: https://unpkg.com/artalk@2.7/dist/Artalk.css
+    js: https://unpkg.com/artalk@2.7/dist/Artalk.js 
+    server: http://120.26.160.123:23366/
+    placeholder: ''
+    darkMode: auto
 
-  # Waline
-  # https://waline.js.org/
-  waline:
-    js: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.js
-    css: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline.css
-    meta_css: https://gcore.jsdelivr.net/npm/@waline/client@3.1.3/dist/waline-meta.css
-    # Waline server address url, you should set this to your own link
-    serverURL: https://net0000.netlify.app/.netlify/functions/comment
-    locale:
-      placeholder:
-        😎嗨，朋友，留下脚印再走呗。
-    reaction: true
 
 
 
