@@ -4,7 +4,7 @@ btn:
   wiki: 文档
   topic: 专栏
   notebook: 笔记本
-  recent_publish: 近期发布
+  recent_publish: 文章
   all_wiki: 所有项目
   category: 分类
   categories: 分类
@@ -18,15 +18,19 @@ btn:
   comments: 参与讨论
 
 meta:
-  recent_update: 最近更新
+  recent_update: 最近开荒
   tag_tree: 标签
   all_notes: 所有笔记
   toc: 本文目录
   read_next: 接下来阅读
   prev: 回顾上一篇
   next: 接下来阅读
-  older: 较早文章
-  newer: 较新文章
+  older: 下一站
+  older_next: 🎬 末班车
+  older_null: 已抵达最后一站
+  newer: 上一站
+  newer_prev: 🌱 荒野
+  newer_null: 等待开荒中
   references: 参考资料
   related_posts: 您可能感兴趣的文章
   back_to_top: 回到顶部
@@ -42,24 +46,40 @@ meta:
     hour: 小时前
     day: 天前
     month: 个月前
+  wordcount:
+    count: 字数
+    words: 字
+    read_time: 时长
+  expire:
+    title: 土地公公提醒
+    message: 这片土地上次开荒于 %s 天前，部分信息可能已发生改变，请注意甄别
+  webinfo:
+    article: 星星：
+    runtime: 自转：
+    wordcount: 星辉：
+    sitetime: 开荒：
+    post: 篇
+    time: 天
+    version: 公转：
 
 page:
   error:
-    what: 很抱歉，您访问的页面不存在
-    why: 可能是输入地址有误或该地址已被删除
-    action: 返回主页
+    what: 你来到了没有知识的荒野
+    why: 可能是传送地址有误或该地址已被清除
+    action: 传送到着陆点
 
 search:
-  search: 站内搜索
+  search: 搜索
+  tip: Power by Algolia
   search_in: 在 %s 中搜索
-  no_results: 没有找到内容！
+  no_results: 空空如也
 
 message:
   copied: 复制成功
   theme_switched:
-    light: 切换到浅色模式
-    dark: 切换到深色模式
-    auto: 切换到跟随系统配色
+    light: 白昼
+    dark: 黑夜
+    auto: 自转
 
 symbol:
   comma: "，"
