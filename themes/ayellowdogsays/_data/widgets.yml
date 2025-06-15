@@ -74,8 +74,8 @@ timeline:
 latest_comment:
   layout: timeline
   title: 最新评论
-  api: # 参照文档获取服务对应的api
-  type: # 选择评论服务
+  api: https://api.ayellowdogsays.cn/
+  type: twikoo # 选择评论服务
   limit: 16 # 限制获取数量
 
 tagtree:
