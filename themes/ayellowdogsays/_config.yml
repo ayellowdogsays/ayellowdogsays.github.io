@@ -238,7 +238,7 @@ comments:
   # https://twikoo.js.org/
   twikoo:
     js: https://gcore.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js # 建议锁定版本
-    envId: https://api.ayellowdogsays.cn
+    envId: https://api.ayellowdogsays.top/
 
 
   # Waline
