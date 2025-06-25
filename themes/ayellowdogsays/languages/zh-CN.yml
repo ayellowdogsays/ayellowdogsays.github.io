@@ -1,89 +1,122 @@
-btn:
-  home: 主页
-  blog: 文章
-  wiki: 文档
-  topic: 专栏
-  notebook: 笔记本
-  recent_publish: 文章
-  all_wiki: 所有项目
-  category: 分类
-  categories: 分类
-  tag: 标签
-  tags: 标签
-  archives: 归档
-  all_posts: 所有文章
-  getting_started: 开始使用
-  edit: 编辑本文
-  top: 回到顶部
-  comments: 参与讨论
+footer:
+  framework: 框架
+  theme: 主题
 
-meta:
-  recent_update: 最近开荒
-  tag_tree: 标签
-  all_notes: 所有笔记
-  toc: 本文目录
-  read_next: 接下来阅读
-  prev: 回顾上一篇
-  next: 接下来阅读
-  older: 下一站
-  older_next: 🎬 末班车
-  older_null: 已抵达最后一站
-  newer: 上一站
-  newer_prev: 🌱 荒野
-  newer_null: 等待开荒中
-  references: 参考资料
-  related_posts: 您可能感兴趣的文章
-  back_to_top: 回到顶部
-  more: 更多
-  created_author: 本文由 %s 发布于
-  created: 发布于
-  updated: 更新于
-  license: 许可协议
-  share: 分享文章
-  date_suffix:
-    just: 刚刚
-    min: 分钟前
-    hour: 小时前
-    day: 天前
-    month: 个月前
-  wordcount:
-    count: 字数
-    words: 字
-    read_time: 时长
-  expire:
-    title: 土地公公提醒
-    message: 这片土地上次开荒于 %s 天前，部分信息可能已发生改变，请注意甄别
-  webinfo:
-    article: 星星：
-    runtime: 自转：
-    wordcount: 星辉：
-    sitetime: 开荒：
-    post: 篇
-    time: 天
-    version: 公转：
+copy:
+  success: 复制成功
+  error: 复制失败
+  noSupport: 浏览器不支持
 
 page:
-  error:
-    what: 你来到了没有知识的荒野
-    why: 可能是传送地址有误或该地址已被清除
-    action: 传送到着陆点
+  articles: 全部文章
+  tag: 标签
+  category: 分类
+  archives: 归档
+
+card_post_count: 条评论
+
+no_title: 无标题
+
+post:
+  created: 发表于
+  updated: 更新于
+  wordcount: 总字数
+  min2read: 阅读时长
+  min2read_unit: 分钟
+  page_pv: 浏览量
+  comments: 评论数
+  copyright:
+    author: 文章作者
+    link: 文章链接
+    copyright_notice: 版权声明
+    copyright_content: '本博客所有文章除特别声明外，均采用
+      <a href="%s" target="_blank">%s</a> 许可协议。转载请注明来源 <a href="%s" target="_blank">%s</a>！'
+  recommend: 相关推荐
+  edit: 编辑
 
 search:
-  search: 搜索
-  tip: Power by Algolia
-  search_in: 在 %s 中搜索
-  no_results: 空空如也
+  title: 搜索
+  load_data: 数据加载中
+  input_placeholder: 搜索文章
+  algolia_search:
+    hits_empty: '未找到符合您查询的内容：${query}'
+    hits_stats: '找到 ${hits} 条结果，耗时 ${time} 毫秒'
+  local_search:
+    hits_empty: '未找到符合您查询的内容：${query}'
+    hits_stats: '共找到 ${hits} 篇文章'
 
-message:
-  copied: 复制成功
-  theme_switched:
-    light: 白昼
-    dark: 黑夜
-    auto: 自转
+pagination:
+  prev: 上一篇
+  next: 下一篇
 
-symbol:
-  comma: "，"
-  period: "。"
-  colon: "："
-  brackets_l: "（"
-  brackets_r: "）"
+comment: 评论
+
+aside:
+  articles: 文章
+  tags: 标签
+  categories: 分类
+  card_announcement: 公告
+  card_categories: 分类
+  card_tags: 标签
+  card_archives: 归档
+  card_recent_post: 最新文章
+  card_webinfo:
+    headline: 网站信息
+    article_name: 文章数目
+    runtime:
+      name: 运行时间
+      unit: 天
+    last_push_date:
+      name: 最后更新时间
+    site_wordcount: 本站总字数
+    site_uv_name: 本站访客数
+    site_pv_name: 本站总浏览量
+  more_button: 查看更多
+  card_newest_comments:
+    headline: 最新评论
+    loading_text: 加载中...
+    error: 无法获取评论，请确认相关配置是否正确
+    zero: 暂无评论
+    image: 图片
+    link: 链接
+    code: 代码
+  card_toc: 目录
+  card_post_series: 系列文章
+
+date_suffix:
+  just: 刚刚
+  min: 分钟前
+  hour: 小时前
+  day: 天前
+  month: 个月前
+
+donate: 赞助
+share: 分享
+
+rightside:
+  readmode_title: 阅读模式
+  translate_title: 简繁转换
+  night_mode_title: 日间和夜间模式切换
+  back_to_top: 回到顶部
+  toc: 目录
+  scroll_to_comment: 前往评论
+  setting: 设置
+  aside: 单栏和双栏切换
+  chat: 聊天
+
+copy_copyright:
+  author: 作者
+  link: 链接
+  source: 来源
+  info: 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+Snackbar:
+  chs_to_cht: 已切换为繁体中文
+  cht_to_chs: 已切换为简体中文
+  day_to_night: 已切换为深色模式
+  night_to_day: 已切换为浅色模式
+
+loading: 加载中...
+load_more: 加载更多
+
+error404: 页面未找到
