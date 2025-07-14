@@ -249,7 +249,7 @@ comments:
   # https://twikoo.js.org/
   twikoo:
     js: https://gcore.jsdelivr.net/npm/twikoo@1.6/dist/twikoo.all.min.js # 建议锁定版本
-    envId: https://api.ayellowdogsays.top/
+    envId: https://symphonious-pudding-cd92ef.netlify.app/.netlify/functions/twikoo
 
   # Waline
   # https://waline.js.org/
