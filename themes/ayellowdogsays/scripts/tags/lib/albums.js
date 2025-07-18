@@ -9,7 +9,6 @@
 
 module.exports = ctx => function(args) {
   var args = ctx.args.map(args, ['repo', 'api', 'size'], ['group'])
-  const host = ctx.theme.config.api_host.ghraw
   if (args.size == null) {
     args.size = 's'
   }
@@ -17,7 +16,7 @@ module.exports = ctx => function(args) {
   if (args.api) {
     api = args.api
   } else if (args.repo) {
-    api = `https://${host}/${args.repo}/output/v2/data.json`
+    api = 'https://api.vlts.cc/output_data/v2/' + args.repo
   }
   
   var el = ''

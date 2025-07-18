@@ -506,11 +506,13 @@ plugins:
     # 使用 waline 评论可以写: #waline_container .vcontent img
     selector: .timenode p>img # 多个选择器用英文逗号隔开
 
+
   # swiper
   swiper:
     enable: true
-    css: https://unpkg.com/swiper@10.3/swiper-bundle.min.css
-    js: https://unpkg.com/swiper@10.3/swiper-bundle.min.js
+    homepage: true # 增加该项
+    css: https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css
+    js: https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js
 
   # https://scrollrevealjs.org/api/reveal.html
   scrollreveal:

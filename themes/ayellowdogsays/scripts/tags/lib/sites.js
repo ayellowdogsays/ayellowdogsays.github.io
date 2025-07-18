@@ -9,12 +9,11 @@
 
 module.exports = ctx => function(args) {
   args = ctx.args.map(args, ['repo', 'api'], ['group'])
-  const host = ctx.theme.config.api_host.ghraw
   var api
   if (args.api) {
     api = args.api
   } else if (args.repo) {
-    api = `https://${host}/${args.repo}/output/v2/data.json`
+    api = 'https://api.vlts.cc/output_data/v2/' + args.repo
   }
   
   var el = '<div class="tag-plugin sites-wrap">'
@@ -31,7 +30,7 @@ module.exports = ctx => function(args) {
       if (item?.url && item?.title) {
         el += `<div class="grid-cell site-card">`
         el += `<a class="card-link" target="_blank" rel="external nofollow noopener noreferrer" href="${item.url}">`
-        el += `<img src="${item.cover || item.snapshot || item.screenshot || ('https://image.thum.io/get/width/1280/crop/720/' + item.url)}" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;${ctx.theme.config.default.cover}&quot;;"/>`
+        el += `<img src="${item.cover || item.screenshot || ('https://api.vlts.cc/screenshot?url=' + item.url + '&width=1280&height=720')}" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;${ctx.theme.config.default.cover}&quot;;"/>`
         el += `<div class="info">`
         el += `<img src="${item.icon || item.avatar || ctx.theme.config.default.link}" onerror="javascript:this.removeAttribute(&quot;data-src&quot;);this.src=&quot;${item.icon || item.avatar || ctx.theme.config.default.link}&quot;;"/>`
         el += `<span class="title">${item.title}</span>`

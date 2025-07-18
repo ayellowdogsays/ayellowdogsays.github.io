@@ -4,7 +4,7 @@
     var mermaid_config = {
       startOnLoad: true,
       theme:
-        "<%- theme.style.prefers_theme %>" == "auto" &&
+        "<%- theme.style.darkmode %>" == "auto" &&
           window.matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
           : "<%- conf.theme %>",
