@@ -40,10 +40,13 @@ hexo.extend.tag.register('navbar', require('./lib/navbar')(hexo))
 hexo.extend.tag.register('note', require('./lib/note')(hexo))
 hexo.extend.tag.register('poetry', require('./lib/poetry')(hexo), true)
 hexo.extend.tag.register('quot', require('./lib/quot')(hexo))
+hexo.extend.tag.register('blockquote', require('./lib/blockquote')(hexo), true)
 hexo.extend.tag.register('hashtag', require('./lib/hashtag')(hexo))
 hexo.extend.tag.register('okr', require('./lib/okr')(hexo), {ends: true})
 hexo.extend.tag.register('audio', require('./lib/audio')(hexo))
 hexo.extend.tag.register('video', require('./lib/video')(hexo))
+hexo.extend.tag.register('rating', require('./lib/rating')(hexo))
+hexo.extend.tag.register('vote', require('./lib/vote')(hexo))
 
 // read 阅读类
 hexo.extend.tag.register('reel', require('./lib/read/reel')(hexo), true)
