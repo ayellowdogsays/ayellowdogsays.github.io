@@ -1,191 +1,227 @@
-.search-wrapper
-  width: 100%
-  position: relative
-  margin-bottom: 1.5rem
-
-  > .search-form
-    position: sticky
-    top: 1rem
-    height: 48px
-    display: flex
-    align-items: center
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)
-    z-index: 10
-    border-radius: $border-bar
-    background: var(--alpha50)
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05)
-    backdrop-filter: blur(8px)
-    border: 1px solid var(--card-border)
+.search-wrapper {
+  padding-bottom: 32px;
+  width: 100%;
+  border-radius: $border-card-s;
+  
+  > .search-form {
+    position: sticky;
+    top: 0;
+    height: 48px;  // Slightly taller for better interaction
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.38s ease-out;
+    z-index: 1;
+    border-radius: $border-card-s;
+    color: var(--text);
+    background: var(--bg-a5);  // Subtle background
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     
-    &:hover
-      background: var(--alpha70)
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+    > * {
+      z-index: 1;
+    }
     
-    &:has(input:focus)
-      background: var(--alpha100)
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15)
-      border-color: var(--theme)
-
-  .search-input
-    flex: 1
-    box-sizing: border-box
-    font-family: $ff-body
-    font-size: $fs-15
-    padding: 0 16px
-    height: 100%
-    color: var(--text)
-    background: transparent
-    border: none
-    outline: none
+    &:before {
+      position: absolute;
+      content: '';
+      height: 2px;
+      bottom: 0;
+      left: 1rem;
+      right: 1rem;
+      border-radius: $border-bar;
+      background: var(--theme-a30);  // Use theme color for accent
+      z-index: 0;
+      transition: all 0.3s ease;
+    }
     
-    &::placeholder
-      color: var(--text-p3)
-      opacity: 0.7
-      transition: opacity 0.2s ease
-    
-    &:focus::placeholder
-      opacity: 0.5
-
-  .search-button 
-    display: flex
-    align-items: center
-    justify-content: center
-    height: 100%
-    width: 48px
-    background: transparent
-    border: none
-    cursor: pointer
-    transition: transform 0.2s ease
-    
-    &:hover
-      transform: scale(1.1)
-    
-    svg
-      height: 20px
-      width: 20px
-      color: var(--text-p2)
-      fill: currentColor
-      transition: color 0.2s ease
+    &:hover,
+    &:has(input:focus),
+    &:has(input:not(:placeholder-shown)) {
+      background: var(--bg-a10);  // Slightly more visible on interaction
       
-      path[p-id="1562"]
-        color: $color-theme
-        transition: color 0.3s ease
-
-  &[searching='true']
-    .search-button
-      svg
-        animation: pulse 1.5s infinite
-        
-      path[p-id="1562"]
-        color: $c-green
-
-  &.noresult[searching='true']
-    .search-button
-      path[p-id="1562"]
-        color: $c-red
-
-  .search-no-result
-    display: none
-    color: var(--text-p1)
-    text-align: center
-    font-size: $fs-15
-    padding: 2rem
-    background: var(--alpha20)
-    border-radius: $border-card
-    margin-top: 8px
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05)
-    border: 1px dashed var(--card-border)
-    animation: fadeIn 0.4s ease-out
-
-  #search-result
-    max-height: 60vh
-    overflow-y: auto
-    scrollbar-width: thin
-    scrollbar-color: var(--theme) var(--card)
-    border-radius: $border-card
-    margin-top: 8px
-    background: var(--card)
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08)
-    
-    &::-webkit-scrollbar
-      width: 6px
-    
-    &::-webkit-scrollbar-thumb
-      background: var(--theme)
-      border-radius: 3px
-    
-    &:empty
-      display: none
-    
-    .search-result-list
-      padding: 8px
-      margin: 0
-      list-style-type: none
-    
-    li a
-      display: block
-      background: var(--alpha20)
-      line-height: 1.3
-      padding: 12px 16px
-      border-radius: $border-item
-      transition: all 0.2s ease
-      border: 1px solid transparent
+      &:before {
+        background: var(--theme-a50);  // More prominent theme color
+        height: 100%;
+        left: 0;
+        right: 0;
+      }
       
-      &:hover
-        background: var(--alpha100)
-        transform: translateY(-2px)
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05)
-        border-color: var(--theme-light)
+      .search-button svg {
+        color: var(--theme);  // Match icon with theme
+      }
+    }
+  }
+  
+  .search-input {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: $ff-body;
+    font-size: $fs-15;  // Slightly larger font
+    padding: 12px 16px;  // More horizontal padding
+    color: var(--text);
+    background: transparent;
+    border: none;
+    outline: none;
     
-    li + li
-      margin-top: 8px
-    
-    .search-result-title
-      color: var(--text-p1)
-      font-weight: 600
-      font-size: $fs-16
-      margin-bottom: 4px
-      display: flex
-      align-items: center
+    &::placeholder {
+      color: var(--text-p3);
+      transition: color 0.2s ease;
       
-      &:before
-        content: "→"
-        margin-right: 6px
-        color: var(--theme)
-        font-size: $fs-14
+      @media screen and (prefers-color-scheme: dark) {
+        color: var(--text-p2);
+      }
+    }
     
-    .search-result-content
-      overflow: hidden
-      color: var(--text-p3)
-      margin: 4px 0 0
-      text-align: justify
-      font-size: $fs-14
-      display: -webkit-box
-      -webkit-box-orient: vertical
-      -webkit-line-clamp: 2
-      line-height: 1.5
+    &:focus::placeholder {
+      color: var(--text-p4);  // Make placeholder fade more when focused
+    }
+  }
+  
+  .search-button {
+    border-radius: $border-bar;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     
-    .search-keyword
-      color: $color-theme
-      background: rgba($color-theme, 0.1)
-      padding: 0 2px
-      border-radius: 2px
-      font-weight: 600
+    &:hover {
+      background: var(--bg-a20);
+    }
+    
+    svg {
+      height: 1.1rem;  // Slightly larger icon
+      width: 1.1rem;
+      color: var(--text-p2);
+      fill: currentColor;
+      transition: color 0.2s ease;
+      
+      path[p-id="1562"] {
+        color: var(--theme);
+      }
+    }
+  }
+  
+  &[searching='true'] {
+    .search-button {
+      animation: pulse 1.5s infinite;
+      
+      path[p-id="1562"] {
+        color: $c-green;
+      }
+    }
+  }
+  
+  &.noresult[searching='true'] {
+    .search-button {
+      path[p-id="1562"] {
+        color: $c-red;
+      }
+    }
+  }
+  
+  .search-no-result {
+    display: none;
+    color: var(--text-p1);
+    text-align: center;
+    font-size: $fs-14;
+    padding: 2rem;
+    margin: 8px 0;
+    background: var(--bg-a20);
+    border-radius: $border-card-s;
+    border: 1px dashed var(--bg-a50);
+  }
+  
+  #search-result {
+    max-height: 60vh;
+    overflow: auto;
+    scrollbar-width: none;
+    scrollbar(0, 0);
+    border-radius: $border-bar;
+    margin-top: 12px;
+    
+    &:empty {
+      display: none;
+    }
+    
+    .search-result-list {
+      padding: 0;
+      margin: 8px 0;
+      list-style-type: none;
+    }
+    
+    li a {
+      display: block;
+      background: var(--bg-a20);
+      line-height: 1.2;
+      padding: 1rem;  // More padding
+      border-radius: $border-card-s;
+      transition: all 0.2s ease;
+      border-left: 3px solid transparent;
+      
+      &:hover {
+        background: var(--bg-a100);
+        border-left-color: var(--theme);  // Accent border
+        transform: translateX(2px);
+      }
+    }
+    
+    li + li {
+      margin-top: 8px;
+    }
+    
+    .search-result-title {
+      color: var(--text-p1);
+      font-weight: 700;
+      font-size: $fs-15;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      
+      &:before {
+        content: '狗👉';
+        margin-right: 6px;
+        color: var(--theme);
+        font-size: 0.9em;
+      }
+    }
+    
+    .search-result-content {
+      overflow: hidden;
+      color: var(--text-p3);
+      margin: 4px 0 0;
+      max-height: 13em;
+      text-align: justify;
+      font-size: $fs-13;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      line-height: 1.5;
+    }
+    
+    .search-keyword {
+      color: var(--theme);  // Use theme color instead of red
+      font-weight: bold;
+      background: var(--theme-a10);
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+  }
+}
 
-.search-wrapper.noresult[searching='true']
-  .search-no-result
-    display: block
+.search-wrapper.noresult[searching='true'] {
+  .search-no-result {
+    display: block;
+    margin-bottom: 8px;
+  }
+}
 
-@keyframes pulse
-  0%, 100%
-    opacity: 1
-  50%
-    opacity: 0.6
-
-@keyframes fadeIn
-  from
-    opacity: 0
-    transform: translateY(10px)
-  to
-    opacity: 1
-    transform: translateY(0)
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
