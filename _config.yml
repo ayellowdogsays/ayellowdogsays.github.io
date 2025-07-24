@@ -16,7 +16,7 @@ timezone: ''
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://ayellowdogsays.top/
-permalink: :year/:month/:day/:title/
+permalink: dogs/:year:month:day/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -209,3 +209,6 @@ aisummary:
   
   max_token: 5000           # 输入内容最大 token 长度（非输出限制）
   concurrency: 2            # 并发处理数，建议不高于 5
+
+
+
