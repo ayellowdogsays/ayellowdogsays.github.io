@@ -36,7 +36,7 @@ module.exports = ctx => function(args) {
   }
   el += ' cardlink'
   if (args.api) {
-    el += ` data-api="${args.api}"`
+    el += ` api="${args.api}"`
   }
   el += ' autofill="'
   el += autofill.join(',')
@@ -45,7 +45,11 @@ module.exports = ctx => function(args) {
 
   function loadIcon() {
     var el = ''
-    el += '<div class="lazy img" data-bg="' + (args.icon || ctx.theme.config.default.link) + '"></div>'
+    if (ctx.theme.config.plugins.lazyload && ctx.theme.config.plugins.lazyload.enable) {
+      el += '<div class="lazy img" data-bg="' + (args.icon || ctx.theme.config.default.link) + '"></div>'
+    } else {
+      el += '<div class="lazy img" style="background-image:url(&quot;' + (args.icon || ctx.theme.config.default.link) + '&quot;)"></div>'
+    }
     return el
   }
   function loadTitle() {
