@@ -10,7 +10,7 @@ excerpt: NO
 <div id="qexo-friends"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/qexo-static@1.1.3/hexo/friends/friends.css"/>
 <script src="https://cdn.jsdelivr.net/npm/qexo-static@1.1.3/hexo/friends/friends.js"></script>
-<script>loadQexoFriends("qexo-friends", "https://d.ayellowdogsays.top")</script>
+<script>loadQexoFriends("qexo-friends", "https://dashboard.ayellowdogsays.cn")</script>
 <div id="qexo-friends"></div>
 <link rel="stylesheet" href="https://unpkg.com/qexo-friends/friends.css"/>
 <script src="https://registry.npmmirror.com/qexo-static/1.6.0/files/hexo/friends.js"></script>
@@ -33,6 +33,6 @@ excerpt: NO
 
 <div id="friends-api"></div>
 <script src="https://unpkg.com/qexo-friends/friends-api.js"></script>
-<script>qexo_friend_api("friends-api","https://d.ayellowdogsays.top");</script>
+<script>qexo_friend_api("friends-api","https://dashboard.ayellowdogsays.cn");</script>
 
 {% endfolding %}
