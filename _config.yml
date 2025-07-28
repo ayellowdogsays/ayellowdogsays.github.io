@@ -110,7 +110,7 @@ deploy:
 # Sitemap Generator
 sitemap:
   path: sitemap.xml
-标签: false
+  tags: false
   categories: false
 inject:
   head:
