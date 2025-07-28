@@ -212,7 +212,7 @@ search:
 
 ######## Comments ########
 comments:
-  service: twikoo
+  service: artalk
   comment_title: 快来参与讨论吧~
   lazyload: false # true / false
   custom_css: # artalk,twikoo,... 可以为没有全局启用的评论加载自定义样式
@@ -308,8 +308,8 @@ comments:
   artalk:
     css: https://unpkg.com/artalk@2.9/dist/artalk.css
     js: https://unpkg.com/artalk@2.9/dist/artalk.js
-    server: # 后端服务地址
-    site: '' # 站点名称
+    server: https://rich-felicity-yellowdogpan-4ad174d1.koyeb.app/
+    site: '阿黄说' # 站点名称
     darkMode: auto # 其它模式都有问题，慎用，否则后果自负
     fancybox: true # 是否为评论区启用 fancybox
     # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
