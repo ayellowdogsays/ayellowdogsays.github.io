@@ -540,11 +540,9 @@ plugins:
     # 使用 waline 评论可以写: #waline_container .vcontent img
     selector: .timenode p>img # 多个选择器用英文逗号隔开
 
-  # swiper
-plugins:
   swiper:
     enable: true
-    homepage: true # 增加该项
+    homepage: true
     css: https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css
     js: https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js
 
