@@ -1,3 +1,10 @@
+######## Sidebar ########
+# 左上角显示的 logo 区域，包含图标、大标题、副标题
+logo:
+  avatar: '[{config.avatar}](/dogcare/)' # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
+  title: '[<img no-lazy height="32px" src="https://youke1.picui.cn/s1/2025/07/30/6889820d57f69.png"/>](/dogcare/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
+  subtitle: '你好 | ?' # '文字1 | 文字2' (鼠标放上去会切换到文字2)
+# 侧边栏主功能导航菜单
 # 站点主结构树
 site_tree:
   # 博客列表页配置
