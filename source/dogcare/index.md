@@ -7,7 +7,8 @@ excerpt: NO
 ---
 
 {% quot 我的小伙伴们 icon:hashtag %}
-{% friends ios_developer %}
+{% friends 6 %}
+
 
 {% quot 如何交换友链？ icon:hashtag %}
 
