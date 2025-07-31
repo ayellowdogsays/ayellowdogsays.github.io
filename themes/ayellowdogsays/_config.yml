@@ -714,3 +714,10 @@ api_host:
 system:
   # hexo 支持输出的链接格式众多，维护成本高，为了减少出错，统一成推荐的格式。
   override_pretty_urls: true
+
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/extra.css">
+    - <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/lxgw-wenkai-screen-webfont/1.7.0/style.min.css"/>
+  script:
+    - <script src="/js/extra.js"></script>
