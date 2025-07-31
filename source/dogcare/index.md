@@ -7,14 +7,8 @@ excerpt: NO
 ---
 
 {% quot 我的小伙伴们 icon:hashtag %}
-<div id="qexo-friends"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/qexo-static@1.1.3/hexo/friends/friends.css"/>
-<script src="https://cdn.jsdelivr.net/npm/qexo-static@1.1.3/hexo/friends/friends.js"></script>
-<script>loadQexoFriends("qexo-friends", "https://dashboard.ayellowdogsays.cn")</script>
-<div id="qexo-friends"></div>
-<link rel="stylesheet" href="https://unpkg.com/qexo-friends/friends.css"/>
-<script src="https://registry.npmmirror.com/qexo-static/1.6.0/files/hexo/friends.js"></script>
-<script>loadQexoFriends("qexo-friends", "")</script>
+{% friends ios_developer %}
+
 {% quot 如何交换友链？ icon:hashtag %}
 
 **您的网站应满足以下全部条件：**
@@ -29,10 +23,11 @@ excerpt: NO
 
 {% note color:warning 如果您没有满足上述条件，即时提交了申请也不会通过哦～ %}
 
-> 若要添加友链，请先添加本站友链，并按以下格式在下方
-
-<div id="friends-api"></div>
-<script src="https://unpkg.com/qexo-friends/friends-api.js"></script>
-<script>qexo_friend_api("friends-api","https://dashboard.ayellowdogsays.cn");</script>
+> 若要添加友链，请先添加本站友链，并按以下格式在下方留言，例如
+```
+name: 人
+png: www.图床.com
+则OK
+```
 
 {% endfolding %}
